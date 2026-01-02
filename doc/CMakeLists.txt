@@ -19,10 +19,15 @@ set(DOXYGEN_HHC_PROGRAM)
 set(DOXYGEN_GENERATE_HTMLHELP NO)
 if(SFML_OS_WINDOWS)
     # if HHC is found, we can generate the CHM (compressed HTML) output
-    find_program(DOXYGEN_HHC_PROGRAM
-                 NAMES hhc.exe
-                 PATHS "C:/Program Files/HTML Help Workshop" "C:/Program Files (x86)/HTML Help Workshop"
-                 DOC "HTML Help Compiler program")
+    #find_program(DOXYGEN_HHC_PROGRAM
+    #             NAMES hhc.exe
+    #             PATHS "C:/Program Files/HTML Help Workshop" "C:/Program Files (x86)/HTML Help Workshop"
+    #             DOC "HTML Help Compiler program")
+	find_program(DOXYGEN_HHC_PROGRAM
+             NAMES hhc.exe
+             PATHS "$ENV{ProgramFiles}/HTML Help Workshop" 
+                   "$ENV{ProgramFiles(x86)}/HTML Help Workshop"
+             DOC "HTML Help Compiler program")
     if(DOXYGEN_HHC_PROGRAM)
         if(DOXYGEN_VERSION VERSION_LESS "1.10.0")
             set(DOXYGEN_GENERATE_HTMLHELP YES)
